@@ -1,0 +1,14 @@
+{
+  "configurations": [
+    {
+      "type": "java",
+      "name": "Spring Boot-BootIntegrationApplication<boot_integration>",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "mainClass": "cgg.boot_react_login_test.boot_integration.BootIntegrationApplication",
+      "projectName": "boot_integration",
+      "args": "",
+      "envFile": "${workspaceFolder}/.env"
+    }
+  ]
+}

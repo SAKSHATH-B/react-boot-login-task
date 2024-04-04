@@ -65,40 +65,40 @@ const LoginPage = () => {
   const submitForm = (values) => {
     console.log("submitted");
 
-    const userDetails = sessionStorage.getItem("userDetails");
-    const userDetailsObj = JSON.parse(userDetails);
+    // const userDetails = sessionStorage.getItem("userDetails");
+    // const userDetailsObj = JSON.parse(userDetails);
 
-    if (
-      values.email == userDetailsObj.email &&
-      sha256(values.password).toString() == userDetailsObj.password
-      // bcrypt.compareSync(values.password, userDetailsObj.password)
-      // values.password == userDetailsObj.password
-    ) {
-      // console.log("success");
-      toast.success("login successful");
-      setTimeout(() => {
-        naviagte("/dashboard");
-      }, 1000);
-    } else {
-      // console.log("error");
-      toast.error("incorrect name or password", { duration: 1000 });
-    }
+    // if (
+    //   values.email == userDetailsObj.email &&
+    //   sha256(values.password).toString() == userDetailsObj.password
+    //   // bcrypt.compareSync(values.password, userDetailsObj.password)
+    //   // values.password == userDetailsObj.password
+    // ) {
+    //   // console.log("success");
+    //   toast.success("login successful");
+    //   setTimeout(() => {
+    //     naviagte("/dashboard");
+    //   }, 1000);
+    // } else {
+    //   // console.log("error");
+    //   toast.error("incorrect name or password", { duration: 1000 });
+    // }
 
     // hit api and get response from backend
-    // userLogin(values)
-    //   .then((response) => {
-    //     // if got  response navigate to dashboard
-    //     console.log(response.data);
-    //     sessionStorage.setItem("userDetails", JSON.stringify(response.data));
-    //     toast.success("login successful");
-    //     setTimeout(() => {
-    //       naviagte("/dashboard");
-    //     }, 1000);
-    //   })
-    //   .catch(() => {
-    //     //else toast incorrect name or password
-    //     toast.error("incorrect name or password", { duration: 1000 });
-    //   });
+    userLogin(values)
+      .then((response) => {
+        // if got  response navigate to dashboard
+        console.log(response.data);
+        sessionStorage.setItem("userDetails", JSON.stringify(response.data));
+        toast.success("login successful");
+        setTimeout(() => {
+          naviagte("/dashboard");
+        }, 1000);
+      })
+      .catch(() => {
+        //else toast incorrect name or password
+        toast.error("incorrect name or password", { duration: 1000 });
+      });
   };
 
   return (

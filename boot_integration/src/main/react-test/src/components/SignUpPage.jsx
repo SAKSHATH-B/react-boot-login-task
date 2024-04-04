@@ -39,48 +39,48 @@ const SignUpPage = () => {
 
     // console.log(values);
 
-    if (values) {
-      // const hashedPass = bcrypt.hashSync(values.password, 10);
-      const shaPass = sha256(values.password).toString();
+    // if (values) {
+    //   // const hashedPass = bcrypt.hashSync(values.password, 10);
+    //   const shaPass = sha256(values.password).toString();
 
-      const temp = values;
-      delete temp.conPassword;
+    //   const temp = values;
+    //   delete temp.conPassword;
 
-      const userUpdated = {
-        ...temp,
-        password: shaPass,
-      };
-      console.log(userUpdated);
+    //   const userUpdated = {
+    //     ...temp,
+    //     password: shaPass,
+    //   };
+    //   console.log(userUpdated);
 
-      // sessionStorage.setItem("userDetails", JSON.stringify(values));
-      sessionStorage.setItem("userDetails", JSON.stringify(userUpdated));
-      // console.log("submitted");
-      toast.success("Successfully Registered");
-      setTimeout(() => {
-        navigate("/login");
-      }, 1000);
-    } else {
-      toast.error("error", { duration: 1000 });
-    }
+    //   // sessionStorage.setItem("userDetails", JSON.stringify(values));
+    //   sessionStorage.setItem("userDetails", JSON.stringify(userUpdated));
+    //   // console.log("submitted");
+    //   toast.success("Successfully Registered");
+    //   setTimeout(() => {
+    //     navigate("/login");
+    //   }, 1000);
+    // } else {
+    //   toast.error("error", { duration: 1000 });
+    // }
 
-    // let senderPacket = values;
-    // delete senderPacket.conPassword;
+    let senderPacket = values;
+    delete senderPacket.conPassword;
 
-    // console.log(senderPacket);
+    console.log(senderPacket);
 
-    // userRegister(senderPacket)
-    //   .then((response) => {
-    //     toast.success("signup successful");
-    //     setTimeout(() => {
-    //       navigate("/login");
-    //     }, 1000);
-    //   })
-    //   .catch((err) => {
-    //     toast.error("signup unsuccessful");
-    //     setTimeout(() => {
-    //       // window.location.reload();
-    //     }, 1000);
-    //   });
+    userRegister(senderPacket)
+      .then((response) => {
+        toast.success("signup successful");
+        setTimeout(() => {
+          navigate("/login");
+        }, 1000);
+      })
+      .catch((err) => {
+        toast.error("signup unsuccessful");
+        setTimeout(() => {
+          // window.location.reload();
+        }, 1000);
+      });
   };
 
   return (
